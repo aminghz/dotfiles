@@ -140,7 +140,8 @@ export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
 
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export PYTHONPATH=$PYTHONPATH:/home/amin/ml/rnd
+# export PYTHONPATH=$PYTHONPATH:/home/amin/ml/rnd
 
 # added to avoid using rm for deleting files!
 alias rm="echo Use 'trash', or the full path i.e. '/bin/rm'"
+alias python=python3
