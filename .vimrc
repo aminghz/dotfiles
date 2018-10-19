@@ -24,6 +24,7 @@ set shortmess=atI   " Abbreviate messages
 set nostartofline   " don't jump to first character when paging
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
 set encoding=utf-8
+
 highlight BadWhitespace ctermbg=red guibg=darkred
 "set viminfo='20,<50,s10,h
 
@@ -38,21 +39,6 @@ set nocindent
 set expandtab      " tabs are converted to spaces, use only when required
 "set sm             " show matching braces, somewhat annoying...
 "set nowrap         " don't wrap lines
-
-syntax on           " syntax highlighing
-if has("gui_running")
-    " See ~/.gvimrc
-    set guifont=Monospace\ 10  " use this font
-    set lines=50       " height = 50 lines
-    set columns=100        " width = 100 columns
-	colorscheme desert
-    set background=dark   " adapt colors for background
-    "set selectmode=mouse,key,cmd
-    "set keymodel=
-else
-    colorscheme desert    " use this color scheme
-    set background=light        " adapt colors for background
-endif
 
 if has("autocmd")
     " Restore cursor position
@@ -73,6 +59,8 @@ if has("autocmd")
         \ set textwidth=79
         \ set expandtab
         \ set fileformat=unix
+        \ set foldmethod=indent
+        \ set foldlevel=99
     "au BufRead mutt*[0-9] set tw=72
     
     " Automatically chmod +x Shell and Perl scripts
@@ -131,11 +119,25 @@ nnoremap <C-J> <C-W><C-j>
 nnoremap <C-K> <C-W><C-k>
 nnoremap <C-L> <C-W><C-l>
 nnoremap <C-H> <C-W><C-h>
+nnoremap <space> za
+map <C-n> :NERDTreeToggle<CR>
+map <Leader>w <Plug>(easymotion-w)
+map <Leader>b <Plug>(easymotion-b)
+map <Leader>e <Plug>(easymotion-e)
 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-call plug#begin('~/.vim/plugged')
+let python_highlight_all=1
+syntax on
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" 
+" Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
 " Make sure you use single quotes
 
@@ -167,10 +169,40 @@ call plug#begin('~/.vim/plugged')
 " " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
 
-"Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
+Plug 'tmhedberg/SimpylFold'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'easymotion/vim-easymotion'
+
 
 " Add plugins to &runtimepath
+" call vundle#end()
+" filetype plugin indent on
 call plug#end()
+
+"if has("gui_running")
+"    " See ~/.gvimrc
+"    set guifont=Monospace\ 10  " use this font
+"    set lines=50       " height = 50 lines
+"    set columns=100        " width = 100 columns
+"    colorscheme desert
+"    set background=dark   " adapt colors for background
+"    "set selectmode=mouse,key,cmd
+"    "set keymodel=
+"else
+colorscheme zenburn
+"    colorscheme desert    " use this color scheme
+"    set background=light        " adapt colors for background
+"endif
+
+set autoread
+
