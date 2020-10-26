@@ -137,7 +137,8 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " call vundle#begin()
 " 
 " Plugin 'VundleVim/Vundle.vim'
-call plug#begin('~/.vim/bundle')
+" call plug#begin('~/.vim/bundle')
+call plug#begin()
 
 " Make sure you use single quotes
 
@@ -170,6 +171,7 @@ call plug#begin('~/.vim/bundle')
 " Plug '~/my-prototype-plugin'
 
 " Plug 'fatih/vim-go'
+
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
@@ -180,9 +182,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
+" Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'easymotion/vim-easymotion'
-
+Plug 'rust-lang/rust.vim'
 
 " Add plugins to &runtimepath
 " call vundle#end()
